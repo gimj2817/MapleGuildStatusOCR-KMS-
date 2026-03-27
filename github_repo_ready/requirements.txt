@@ -1,0 +1,9 @@
+opencv-python
+numpy
+requests
+urllib3
+beautifulsoup4
+lxml
+openpyxl
+paddleocr
+PySide6
