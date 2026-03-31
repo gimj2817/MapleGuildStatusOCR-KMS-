@@ -1,0 +1,43 @@
+최종 안정판 기준 exe 빌드 안내
+
+기준 파일
+- final_batch_queue_stable_paddle2_numberocr_flaghybrid.py
+
+현재 확인된 핵심 조합
+- paddlepaddle==2.6.2
+- paddleocr==2.10.0
+
+1) 같은 폴더에 아래 파일 3개를 둔다.
+- final_batch_queue_stable_paddle2_numberocr_flaghybrid.py
+- requirements_stable_paddle2.txt
+- build_exe_stable_paddle2.bat
+
+2) 먼저 파이썬으로 정상 실행되는지 확인한다.
+명령:
+python final_batch_queue_stable_paddle2_numberocr_flaghybrid.py
+
+3) 정상 실행되면 build_exe_stable_paddle2.bat 를 실행한다.
+또는 터미널에서 아래를 직접 입력한다.
+
+python -m pip install --upgrade pip
+python -m pip install -r requirements_stable_paddle2.txt
+python -m pip install --upgrade pyinstaller
+python -m PyInstaller --noconfirm --clean --windowed --name maple-guild-participation-ocr final_batch_queue_stable_paddle2_numberocr_flaghybrid.py
+
+4) 빌드가 끝나면 아래 폴더가 생긴다.
+- dist\maple-guild-participation-ocr\
+
+5) 배포는 exe 하나만 보내지 말고, 위 폴더 전체를 zip으로 압축해서 배포한다.
+- maple-guild-participation-ocr.exe
+- 내부 DLL / Qt / Paddle 관련 파일들이 같이 있어야 한다.
+
+6) 다른 PC에서 테스트한다.
+- 길드명 검색
+- 이미지 여러 장 추가
+- F/G 인식 확인
+- 엑셀 저장 확인
+
+주의
+- 이 앱은 현재 one-folder 배포를 권장한다.
+- one-file(--onefile)도 가능하지만, 처음에는 one-folder가 덜 깨진다.
+- exe는 지금 정상 동작이 확인된 같은 환경에서 빌드하는 게 가장 안전하다.
